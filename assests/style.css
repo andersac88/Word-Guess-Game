@@ -1,0 +1,17 @@
+html, body {
+    background-image: url(images/Gallows.jpg);
+    background-size: 100%;
+}
+
+p, h1 {
+    color: #ffffff !important;
+    font-family: 'MedievalSharp', cursive !important;
+}
+
+h1 {
+    text-align: center;
+}
+
+#directions-text{
+   text-align: center;
+}
