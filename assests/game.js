@@ -1,9 +1,5 @@
-// create variable for wins, guesses remaining 
-
 var wins = 0
 var guessesRemaining = 10
-
-// create an array of possible words: Theme is medieval era
 
 var computerChoices = [
     "castle",
@@ -24,8 +20,6 @@ var computerChoices = [
 
 var userChoices = [];
 
-// Create variables that hold references to the places in the HTML where we want to display things.
-
 var directionsText = document.getElementById("directions-text");
 var userGuessText = document.getElementById("userguess-text");
 var userChoiceText = document.getElementById("userchoice-text");
@@ -34,34 +28,26 @@ var winsText = document.getElementById("wins-text")
 var guessesRemainingText = document.getElementById("guessesremaining-text")
 var dashesChoiceText = document.getElementById("dashes")
 
-
-// create a function where computer selects a random word
-
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 var dashes = computerGuess.replace(/[a-z]/g,"-");
 
-
-// Create Function to start game - press any key to start
-document.onkeyup = function(event) {
-    //var dashes = computerGuess.replace(/[a-z]/g,"-");   
+    document.onkeyup = function(event) {
     var userGuess = event.key;
-
-  
      
     for (var i = 0; i < computerGuess.length; i++) {
        if (computerGuess[i] === userGuess) {
-            dashes[i] = userChoices[i];
-            console.log(userChoices);
+           dashes = userGuess;
+           // if else... perhaps make multiple variables for dashes with relation to position in string for a .replace
+           // var userCorrect = userGuess.toString()
+           // dashes = userCorrect
+           // console.log(userCorrect);
         }  
     }  
-        
         if (guessesRemaining === 0) {
             var confirmRestart = confirm("Game Over. Would you like to try again?")
             if(confirmRestart) {
                 window.location.reload();
-            }
-        
-        
+            } 
     } if ((computerGuess[0] !== userGuess) &&
         (computerGuess[1] !== userGuess) && 
         (computerGuess[2] !== userGuess) &&
@@ -74,10 +60,7 @@ document.onkeyup = function(event) {
         (computerGuess[9] !== userGuess)){
         guessesRemaining--
         userChoices.push(" " + userGuess)
-    }
-    
-
-;
+    };
 
 directionsText.textContent = "";
 userChoiceText.textContent = "Incorrect Guesses: " + userChoices;
@@ -85,9 +68,6 @@ userGuessText.textContent = "Most Recent Guess: " + userGuess;
 guessesRemainingText.textContent = guessesRemaining;
 computerChoiceText.textContent = computerGuess;
 dashesChoiceText.textContent = dashes;
-
-
-
 };
 
 // notes to self......
@@ -97,10 +77,6 @@ dashesChoiceText.textContent = dashes;
 // have players selection displayed (ensure capital letter); if correct replace - with letter, if incorrect reduce guesses remaining 
 
 // computer selects another word after guesses remaining = 0 or word is guessed
-
-//console.log(computerGuess)
-//console.log(userGuess)
-
 
 //userChoiceText.appendChild(nextChoiceText);
 //nextChoiceText.textContent = userGuess;
