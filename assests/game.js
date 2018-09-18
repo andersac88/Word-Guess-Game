@@ -49,14 +49,14 @@ document.onkeyup = function(event) {
      
     for (var i = 0; i < computerGuess.length; i++) {
        if (computerGuess[i] === userGuess) {
-            dashes[i] = userGuess;
-            console.log(dashes[i]);
+            dashes[i] = userChoices[i];
+            console.log(userChoices);
         }    
         
         if (guessesRemaining === 0) {
             console.log("LOSER");
             return;
-        }
+        } 
         
     } if ((computerGuess[0] !== userGuess) &&
         (computerGuess[1] !== userGuess) && 
@@ -69,10 +69,11 @@ document.onkeyup = function(event) {
         (computerGuess[8] !== userGuess) &&
         (computerGuess[9] !== userGuess)){
         guessesRemaining--
+        userChoices.push(" " + userGuess)
     }
     
 
-userChoices.push(" " + userGuess);
+;
 
 directionsText.textContent = "";
 userChoiceText.textContent = "Incorrect Guesses: " + userChoices;
