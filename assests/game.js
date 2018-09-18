@@ -34,6 +34,7 @@ var winsText = document.getElementById("wins-text")
 var guessesRemainingText = document.getElementById("guessesremaining-text")
 var dashesChoiceText = document.getElementById("dashes")
 
+
 // create a function where computer selects a random word
 
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
@@ -51,12 +52,15 @@ document.onkeyup = function(event) {
        if (computerGuess[i] === userGuess) {
             dashes[i] = userChoices[i];
             console.log(userChoices);
-        }    
+        }  
+    }  
         
         if (guessesRemaining === 0) {
-            console.log("LOSER");
-            return;
-        } 
+            var confirmRestart = confirm("Game Over. Would you like to try again?")
+            if(confirmRestart) {
+                window.location.reload();
+            }
+        
         
     } if ((computerGuess[0] !== userGuess) &&
         (computerGuess[1] !== userGuess) && 
