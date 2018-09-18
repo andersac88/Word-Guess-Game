@@ -19,6 +19,7 @@ var computerChoices = [
     "camelot",
     "crusade",
     "trebuchet",
+    "joust",
 ];
 
 var userChoices = [];
@@ -38,24 +39,27 @@ var dashesChoiceText = document.getElementById("dashes")
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 var dashes = computerGuess.replace(/[a-z]/g,"-");
 
+
 // Create Function to start game - press any key to start
 document.onkeyup = function(event) {
-    
+    //var dashes = computerGuess.replace(/[a-z]/g,"-");   
     var userGuess = event.key;
 
-    if (guessesRemaining === 0) {
-        console.log("LOSER");
-        return;
-    }
+  
      
     for (var i = 0; i < computerGuess.length; i++) {
-        console.log(computerGuess[i]);
-       <---- if (computerGuess[i] === userGuess) {
-            dashes.replace(/[i]/g,userGuess);
-            console.log("success");
-        }     
+       if (computerGuess[i] === userGuess) {
+            dashes[i] = userGuess;
+            console.log(dashes[i]);
+        }    
+        
+        if (guessesRemaining === 0) {
+            console.log("LOSER");
+            return;
+        }
+        
     } if ((computerGuess[0] !== userGuess) &&
-        (computerGuess[1] !== userGuess) &&
+        (computerGuess[1] !== userGuess) && 
         (computerGuess[2] !== userGuess) &&
         (computerGuess[3] !== userGuess) &&
         (computerGuess[4] !== userGuess) &&
@@ -81,7 +85,7 @@ dashesChoiceText.textContent = dashes;
 
 };
 
-
+// notes to self......
 // have selection displayed where - - - - - - - represents letters of word
   
 
@@ -96,4 +100,9 @@ dashesChoiceText.textContent = dashes;
 //userChoiceText.appendChild(nextChoiceText);
 //nextChoiceText.textContent = userGuess;
 //var nextChoiceText = document.createElement("span")
+
+//var txt2 = txt1.slice(0, 3) + "bar" + txt1.slice(3);
+
+
+
 
