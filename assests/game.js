@@ -31,44 +31,41 @@ var dashesChoiceText = document.getElementById("dashes")
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 var dashes = computerGuess.replace(/[a-z]/g,"-");
 
-    document.onkeyup = function(event) {
-    var userGuess = event.key;
-     
-    for (var i = 0; i < computerGuess.length; i++) {
-       if (computerGuess[i] === userGuess) {
-           dashes = userGuess;
-           // if else... perhaps make multiple variables for dashes with relation to position in string for a .replace
-           // var userCorrect = userGuess.toString()
-           // dashes = userCorrect
-           // console.log(userCorrect);
-        }  
-    }  
-        if (guessesRemaining === 0) {
-            var confirmRestart = confirm("Game Over. Would you like to try again?")
-            if(confirmRestart) {
-                window.location.reload();
-            } 
-    } if ((computerGuess[0] !== userGuess) &&
-        (computerGuess[1] !== userGuess) && 
-        (computerGuess[2] !== userGuess) &&
-        (computerGuess[3] !== userGuess) &&
-        (computerGuess[4] !== userGuess) &&
-        (computerGuess[5] !== userGuess) &&
-        (computerGuess[6] !== userGuess) &&
-        (computerGuess[7] !== userGuess) &&
-        (computerGuess[8] !== userGuess) &&
-        (computerGuess[9] !== userGuess)){
-        guessesRemaining--
-        userChoices.push(" " + userGuess)
-    };
-
 directionsText.textContent = "";
 userChoiceText.textContent = "Incorrect Guesses: " + userChoices;
 userGuessText.textContent = "Most Recent Guess: " + userGuess;
 guessesRemainingText.textContent = guessesRemaining;
 computerChoiceText.textContent = computerGuess;
 dashesChoiceText.textContent = dashes;
-};
+
+
+    document.onkeyup = function(event) {
+    var userGuess = event.key;
+
+    function evaluateGuess(letter) {
+        // Array to store positions of letters in string
+        var positions = [];
+    
+        // Loop through word finding all instances of guessed letter, store the indicies in an array.
+        for (var i = 0; i < computerChoices[computerGuess].length; i++) {
+            if(computerChoices[computerGuess][i] === userGuess) {
+                positions.push(i);
+            }
+        }
+    
+        // if there are no indicies, remove a guess and update the hangman image
+        if (positions.length <= 0) {
+            remainingGuesses--;
+        } else {
+            // Loop through all the indicies and replace the '_' with a letter.
+            for(var i = 0; i < positions.length; i++) {
+                dashes[positions[i]] = userGuess;
+            }
+        });
+     
+   
+
+
 
 // notes to self......
 // have selection displayed where - - - - - - - represents letters of word
@@ -83,6 +80,12 @@ dashesChoiceText.textContent = dashes;
 //var nextChoiceText = document.createElement("span")
 
 //var txt2 = txt1.slice(0, 3) + "bar" + txt1.slice(3);
+//else if (computerGuess[1] === userGuess) {
+    //dashes = dashes.slice(0,1) + userGuess;
+   // else if (computerGuess[1] === userGuess) {
+    // dashes = dashes.slice(0,1) + userGuess;
+    // else if (computerGuess[1] === userGuess) {
+        /// dashes = dashes.slice(0,1) + userGuess;
 
 
 
