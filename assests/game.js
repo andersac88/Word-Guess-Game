@@ -90,7 +90,7 @@ directionsText.textContent = "";
 userChoiceText.textContent = "Incorrect Guesses: " + userChoices;
 userGuessText.textContent = "Most Recent Guess: " + userGuess;
 guessesRemainingText.textContent = "Guesses Remaining: " + guessesRemaining;
-computerChoiceText.textContent = computerGuess;
+computerChoiceText.textContent = "Answer: " + computerGuess;
 dashesChoiceText.textContent = dashGuess;
 winsText.textContent = "Number of Wins: " + wins;
 };
