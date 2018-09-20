@@ -15,3 +15,7 @@ h1 {
 #directions-text{
    text-align: center;
 }
+
+#computerchoice-text {
+    visibility: hidden;
+}
