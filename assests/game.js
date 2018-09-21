@@ -29,12 +29,23 @@ var dashesChoiceText = document.getElementById("dashes")
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 var dashGuess = [];
 
+// define function to begin the game
+function begin() {
 for (var i=0; i < computerGuess.length; i++) {
     dashGuess.push("_");
     console.log(dashGuess);
 }
+}
 
+// define function to reset the game when you win
+function reset() {
+     dashGuess = [];
+     usherChoices = [];
+     computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+     guessesRemaining = 10;
+}
 
+begin();
 // have key strokes start function
     document.onkeyup = function(event) {
         if(event.keyCode >= 65 && event.keyCode <= 90) {
@@ -83,7 +94,8 @@ for (var i=0; i < computerGuess.length; i++) {
 //Declare Victory        
 if(dashGuess.indexOf("_") === -1) {
     wins++;
-// reset game?
+    reset();
+    begin();
      }
 
 directionsText.textContent = "";
