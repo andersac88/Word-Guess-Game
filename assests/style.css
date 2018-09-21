@@ -19,3 +19,7 @@ h1 {
 #computerchoice-text {
     visibility: hidden;
 }
+
+#dashes {
+    font-size: 24px;    
+}
