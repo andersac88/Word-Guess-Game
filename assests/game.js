@@ -43,7 +43,7 @@ for (var i=0; i < computerGuess.length; i++) {
 // define function to reset the game when you win
 function reset() {
      dashGuess = [];
-     usherChoices = [];
+     userChoices = [];
      computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
      guessesRemaining = 10;
 }
