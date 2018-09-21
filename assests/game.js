@@ -12,6 +12,9 @@ var computerChoices = [
     "camelot",
     "crusade",
     "joust",
+    "trebuchet",
+    "queen",
+    "princess",
 ];
 
 var userChoices = [];
@@ -45,7 +48,9 @@ function reset() {
      guessesRemaining = 10;
 }
 
+//Run Function to start the game
 begin();
+
 // have key strokes start function
     document.onkeyup = function(event) {
         if(event.keyCode >= 65 && event.keyCode <= 90) {
@@ -60,27 +65,11 @@ begin();
         userChoices.push(" " + userGuess)
     } 
 //Search computer selected word/guess for user guess/keystroke; match
-    else if (computerGuess.search(userGuess) === 0) {
-        dashGuess[0] = userGuess
-    }   else if (computerGuess.search(userGuess) === 1) {
-        dashGuess[1] = userGuess
-    }   else if (computerGuess.search(userGuess) === 2) {
-        dashGuess[2] = userGuess
-    }   else if (computerGuess.search(userGuess) === 3) {
-        dashGuess[3] = userGuess
-    }   else if (computerGuess.search(userGuess) === 4) {
-        dashGuess[4] = userGuess
-    }   else if (computerGuess.search(userGuess) === 5) {
-        dashGuess[5] = userGuess
-    }   else if (computerGuess.search(userGuess) === 6) {
-        dashGuess[6] = userGuess
-    }   else if (computerGuess.search(userGuess) === 7) {
-        dashGuess[7] = userGuess
-    }   else if (computerGuess.search(userGuess) === 8) {
-        dashGuess[8] = userGuess
-    }   else if (computerGuess.search(userGuess) === 9) {
-        dashGuess[9] = userGuess
-    } 
+   
+for (var i = 0; i < computerGuess.length; i++) {
+    if (userGuess === computerGuess[i]) {
+        dashGuess[i] = computerGuess[i];
+    }
 }
 
 //Restart Game when out of guesses
@@ -103,22 +92,7 @@ userChoiceText.textContent = "Incorrect Guesses: " + userChoices;
 userGuessText.textContent = "Most Recent Guess: " + userGuess;
 guessesRemainingText.textContent = "Guesses Remaining: " + guessesRemaining;
 computerChoiceText.textContent = "Answer: " + computerGuess;
-dashesChoiceText.textContent = dashGuess;
+dashesChoiceText.textContent = dashGuess.join("");
 winsText.textContent = "Number of Wins: " + wins;
-};
-
-// notes to self......
-// have selection displayed where - - - - - - - represents letters of word
-  
-
-// have players selection displayed (ensure capital letter); if correct replace - with letter, if incorrect reduce guesses remaining 
-
-// computer selects another word after guesses remaining = 0 or word is guessed
-
-//userChoiceText.appendChild(nextChoiceText);
-//nextChoiceText.textContent = userGuess;
-//var nextChoiceText = document.createElement("span")
-
-//var txt2 = txt1.slice(0, 3) + "bar" + txt1.slice(3);
-
-
+}
+    };
