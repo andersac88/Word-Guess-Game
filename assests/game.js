@@ -54,7 +54,6 @@ function winReset() {
 function lossReset() {
     dashGuess = [];
     document.getElementById("computerchoice-text").style.cssText = "visibility: hidden";
-    wins = 0;
     userChoices = [];
     computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     guessesRemaining = 10;
@@ -86,7 +85,7 @@ for (var i = 0; i < computerGuess.length; i++) {
 //Restart Game when out of guesses
     if (guessesRemaining === 0) {
         //document.getElementById("computerchoice-text").style.cssText = "visibility: visible";
-       losses--;
+       losses++;
         lossReset()
        begin()
     }    
