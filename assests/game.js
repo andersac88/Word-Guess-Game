@@ -16,9 +16,12 @@ var computerChoices = [
     "trebuchet",
     "queen",
     "princess",
+    "jester",
 ];
 
 var userChoices = [];
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+var dashGuess = [];
 
 var directionsText = document.getElementById("directions-text");
 var userGuessText = document.getElementById("userguess-text");
@@ -29,8 +32,7 @@ var guessesRemainingText = document.getElementById("guessesremaining-text");
 var dashesChoiceText = document.getElementById("dashes");
 var lossText = document.getElementById("loss-text");
 
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-var dashGuess = [];
+
 
 // define function to begin the game
 function begin() {
@@ -84,7 +86,8 @@ for (var i = 0; i < computerGuess.length; i++) {
 //Restart Game when out of guesses
     if (guessesRemaining === 0) {
         //document.getElementById("computerchoice-text").style.cssText = "visibility: visible";
-       lossReset()
+       losses--;
+        lossReset()
        begin()
     }    
 //Declare Victory        
